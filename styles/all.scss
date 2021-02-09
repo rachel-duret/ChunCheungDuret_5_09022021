@@ -1,0 +1,103 @@
+.bloc_page{
+    width: 980px;
+    height: auto;
+    margin: auto;
+    flex: 1;
+}
+header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    background-color: bisque;
+    #logo{
+        width: auto;
+        height: 50px;
+    }
+    ul{
+        display: flex;
+        justify-content: space-between;
+    
+    }
+    ul li{
+        list-style: none;
+        margin-right: 30px;
+        font-size: larger;
+        font-weight: 500;
+    }
+    
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+.teddies__box{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+    & >p{
+            margin-right: 30px;
+        }
+    
+    & h2{
+        font-family: Raleway;
+        font-size: larger;
+        font-weight: 700;
+    }
+}
+// norbert.html
+.teddy{
+   
+    & h1{
+        font-family: Raleway;
+        font-size: larger;
+        font-weight: 700;
+
+    }
+    & h2{
+        display: flex;
+        justify-content: space-between;
+        font-family: Raleway;
+        font-size: medium;
+        font-weight: 500;
+    }
+
+}
+#info-client{
+    width: 80%;
+    height: auto;
+    margin: auto;
+    & div{
+        border: 1px solid #f2f2f2;
+        height: 30px;
+
+    }
+    & label{
+        font-weight: 600;
+        height: 100%;
+       
+    }
+    & input{
+        display: inline-block;
+        border: none;
+        width: 80%;
+        height: 95%
+    }
+}
+.btn{
+    display: inline-block;
+    width: 80%;
+    height: 30px;
+    border-radius: 20px;
+    margin: 20px auto;
+
+}
+img{
+    width: 300px;
+    height: auto;
+    border: 1px solid #f2f2f2;
+    border-radius: 20px;
+}
+

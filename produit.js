@@ -25,7 +25,6 @@ url.then(function(data){
             price.innerText = key.price ;
             i.className ="fas fa-euro-sign"
             btn.innerText = 'Add to panier'
-           
             
             box.appendChild(div);
             div.appendChild(img);

@@ -30,12 +30,9 @@ url.then(function(data){
         console.log(box)
                                
     }
-    displayTeddies( dataArray[0].name, dataArray[0].imageUrl, dataArray[0].name, dataArray[0].price, 'produit.html?id='+dataArray[0]._id);
-    displayTeddies(dataArray[1].name,dataArray[1].imageUrl, dataArray[1].name, dataArray[1].price, 'produit.html?id='+dataArray[1]._id);
-    displayTeddies(dataArray[2].name,dataArray[2].imageUrl, dataArray[2].name, dataArray[2].price, 'produit.html?id='+dataArray[2]._id);
-    displayTeddies(dataArray[3].name,dataArray[3].imageUrl, dataArray[3].name, dataArray[3].price, 'produit.html?id='+dataArray[3]._id);
-    displayTeddies( dataArray[4].name,dataArray[4].imageUrl, dataArray[4].name, dataArray[4].price, 'produit.html?id='+dataArray[4]._id);
-       
+    for(let i in dataArray){
+        displayTeddies( dataArray[i].name, dataArray[i].imageUrl, dataArray[i].name, dataArray[i].price, 'produit.html?id='+dataArray[i]._id);
+    }
 })
 .catch(function(error){
     alert('error');

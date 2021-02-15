@@ -1,11 +1,12 @@
 // add goods in html
+'use strict';
 let url = fetch('http://localhost:3000/api/teddies');
 url.then(function(data){
     return data.json();
    
 }).then(function(dataArray){
     console.log(dataArray[0]._id);
-    function displayTeddies(id, src, title, price,href){
+    function displayTeddies( src, title, price,href){
         let box = document.getElementById('teddies');
         let div = document.createElement('div');
         let img = document.createElement('img');
@@ -19,7 +20,7 @@ url.then(function(data){
         p.innerText = price ;
         i.className ="fas fa-euro-sign"
         a.innerText = 'Voir plus'
-        a.id =id;
+        
         a.href = href;
         box.appendChild(div);
         div.appendChild(img);
@@ -31,7 +32,7 @@ url.then(function(data){
                                
     }
     for(let i in dataArray){
-        displayTeddies( dataArray[i].name, dataArray[i].imageUrl, dataArray[i].name, dataArray[i].price, 'produit.html?id='+dataArray[i]._id);
+        displayTeddies( dataArray[i].imageUrl, dataArray[i].name, dataArray[i].price, 'produit.html?id='+dataArray[i]._id);
     }
 })
 .catch(function(error){

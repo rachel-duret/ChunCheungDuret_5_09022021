@@ -1,3 +1,8 @@
+let panierArray = new Array//
+function init(){
+    panierArray = JSON.parse(localStorage.getItem('panierLists'));
+}
+init();
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get('id');
 let url =fetch('http://localhost:3000/api/teddies');
@@ -44,20 +49,20 @@ url.then(function(data){
             }
 
              //add event listener add products to localstorage
-            let productData =JSON.stringify(key) ;
-            let productId = JSON.stringify(id);
+            /* let productData =JSON.stringify(key) ;
+            let productId = JSON.stringify(id); */
            
             let addGoodBtn = document.getElementById('addBtn');
             addGoodBtn.addEventListener('click', function(){
-             localStorage.setItem(productId, productData);
+                panierArray.push(key)
+                localStorage.setItem('panierLists', JSON.stringify(panierArray));
+               //panierArry.push(JSON.parse(localStorage.getItem(productId)));
+               console.log(panierArray);
+                
+                
             })
 
-            window.addEventListener('storage', function(e){
-                let panierData = localStorage.getItem('productData');
-                
-            
-            
-            })
+           
         }
         
              

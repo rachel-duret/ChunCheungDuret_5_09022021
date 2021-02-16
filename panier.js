@@ -1,34 +1,69 @@
 
 let panierLists = JSON.parse(localStorage.getItem('panierLists'));
 console.log(panierLists)
-function displayPanier( src, title, price){
+function displayPanier( src, title, id, colors, quantité, price){
     let panier = document.getElementById('panier');
     let div = document.createElement('div');
     let img = document.createElement('img');
-    let h2 = document.createElement('h2')
-    let p = document.createElement('p')
+    let name = document.createElement('h2')
+    let idNumber = document.createElement('p')
+    let color = document.createElement('p')
+    let totalQte = document.createElement('p')
+    let prix = document.createElement('p')
     let i = document.createElement('i')
-    let btn = document.createElement('button');
+    let btnDel = document.createElement('button');
+    
+    
     div.className = "teddy";
     img.src = src;
-    h2.innerText = title;
-    p.innerText = price ;
-    i.className ="fas fa-euro-sign"
-    btn.className = 'delBtn'
-    btn.innerText = 'delete'
+    name.innerText = title;
+    idNumber.innerText ='ref:'+ id;
+    color.innerText = colors;
+    totalQte.innerText = quantité;
+    prix.innerText = price;
+    i.className = "fas fa-euro-sign"
+    btnDel.className = 'delBtn'
+    btnDel.id = id;
+    btnDel.innerText = 'Supprimer'
     
     
    
     panier.appendChild(div);
     div.appendChild(img);
-    div.appendChild(h2);
-    div.appendChild(p);      
-    p.appendChild(i)
-    div.appendChild(btn);
-    
-    
+    div.appendChild(name);
+    name.appendChild(idNumber);
+    div.appendChild(color)
+    div.appendChild(totalQte);
+    div.appendChild(prix);      
+    prix.appendChild(i)
+    div.appendChild(btnDel);
+ 
                            
 }
 for(let i in panierLists){
-    displayPanier( panierLists[i].imageUrl, panierLists[i].name, panierLists[i].price);
+    displayPanier( panierLists[i].img, panierLists[i].name,panierLists[i].id,panierLists[i].color,panierLists[i].quantité,panierLists[i].price);
 }
+function deletGood(){
+    let btns = document.querySelectorAll('.delBtn');
+    
+
+    for(let i=0; i<btns.length; i++){
+        btns[i].addEventListener('click', function(e){
+            
+            let delDiv = btns[i].parentElement;
+            let parent = delDiv.parentElement;
+            let removed = parent.removeChild(delDiv);
+            removed===removed;
+             panierLists.splice(i,1);
+             console.log(panierLists)
+            console.log(JSON.stringify(panierLists));
+            localStorage.removeItem('panierLists')
+            localStorage.setItem('panierLists',JSON.stringify(panierLists));
+            
+        
+            
+        })
+    }
+   
+}
+deletGood();

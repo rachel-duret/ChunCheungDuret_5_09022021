@@ -1,8 +1,8 @@
-let panierArray = new Array//
-function init(){
+let panierArray = []//
+function getPanierList(){
     panierArray = JSON.parse(localStorage.getItem('panierLists'));
 }
-init();
+getPanierList();
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get('id');
 let url =fetch('http://localhost:3000/api/teddies');
@@ -22,16 +22,19 @@ url.then(function(data){
             let description = document.createElement('p')
             let price = document.createElement('p')
             let i = document.createElement('i')
-            let select = document.createElement('select');
+            let selectColor = document.createElement('select');
+            let selectQte = document.createElement('select');
             let btn = document.createElement('button');
             
             img.src = key.imageUrl;
             name.innerText = key.name;
             description.innerText = key.description;
-            price.innerText = key.price ;
+            price.innerText = key.price/100 ;
             i.className ="fas fa-euro-sign"
+            selectQte.name = 'number';
             btn.innerText = 'Add to panier'
             btn.id = 'addBtn'
+            
 
             box.appendChild(div);
             div.appendChild(img);
@@ -39,24 +42,42 @@ url.then(function(data){
             div.appendChild(description); 
             div.appendChild(price);      
             price.appendChild(i)
-            div.appendChild(select);
+            div.appendChild(selectColor);
+            div.appendChild(selectQte);
             div.appendChild(btn);
             for(let i =0; i<key.colors.length; i++){
                 let option = document.createElement('option');
                 option.innerText =key.colors[i];
-                select.appendChild(option);
+                selectColor.appendChild(option);
+                console.log(selectColor.value)
+
+            }
+            for(let i =1; i<10; i++){
+                let option = document.createElement('option');
+                option.innerText =i;
+                selectQte.appendChild(option);
+                console.log(selectQte.value)
 
             }
 
              //add event listener add products to localstorage
-            /* let productData =JSON.stringify(key) ;
-            let productId = JSON.stringify(id); */
+             
+
            
             let addGoodBtn = document.getElementById('addBtn');
             addGoodBtn.addEventListener('click', function(){
-                panierArray.push(key)
-                localStorage.setItem('panierLists', JSON.stringify(panierArray));
-               //panierArry.push(JSON.parse(localStorage.getItem(productId)));
+            
+                let PanierList = {
+                    "img": img.src,
+                    "name":name.innerText,
+                    "color":selectColor.value,
+                    "price":price.innerText*selectQte.value,
+                    "id": id,
+                    "quantité":selectQte.value
+                }
+                
+                panierArray.push(PanierList)
+                localStorage.setItem('panierLists', JSON.stringify(panierArray));        
                console.log(panierArray);
                 
                 

@@ -17,7 +17,7 @@ url.then(function(data){
         div.className = "teddy";
         img.src = src;
         h2.innerText = title;
-        p.innerText = price ;
+        p.innerText = price/100 ;
         i.className ="fas fa-euro-sign"
         a.innerText = 'Voir plus'
         

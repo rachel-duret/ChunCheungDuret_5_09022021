@@ -41,10 +41,14 @@ for(let i in panierLists){
     displayPanier( panierLists[i].img, panierLists[i].name,panierLists[i].color,panierLists[i].quantité,panierLists[i].price);
 }
 
- // count total price
+ // count total price and create productsId
+ let products= new Array;
  let sum = 0;
  for( let i=0; i<panierLists.length; i++){
      sum += panierLists[i].price 
+     products.push(panierLists[i].id);
+     console.log(products)
+    
  }
  let totalPrix = document.createElement('h3');
  let i = document.createElement('i');
@@ -84,25 +88,29 @@ submit.addEventListener('click', function(e){
     let address = document.getElementById('addresse');
     let city = document.getElementById('ville');
     let email = document.getElementById('email')
-    let contact =JSON.stringify( {
-        lastName: lastName.value,
-        firstName: firstName.value,
+    let contact = {
+        firstName: lastName.value,
+        lastName: firstName.value,
         address: address.value,
         city: city.value,
         email: email.value
-    })
-   let products =  JSON.stringify(panierLists);
+    }
+    //products: [string] <-- array of product _id
+    
    console.log(products)
    let reqUrl = 'http://localhost:3000/api/teddies/order';
    fetch(reqUrl, {
-       method: "post",
-       body: contact, products,
-       headers:{"Content-Type": "application/json"}
+       method: "POST",
+       headers:{
+           "Content-Type": "application/json"
+        },
+       body: JSON.stringify({contact, products})   
    })
    .then(function(response){
        return response.json()
    })
    .then(function(data){
+       
        console.log(data)
    })
    .catch(function(err){

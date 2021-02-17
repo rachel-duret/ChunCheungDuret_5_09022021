@@ -1,7 +1,7 @@
 
 let panierLists = JSON.parse(localStorage.getItem('panierLists'));
 console.log(panierLists)
-function displayPanier( src, title, id, colors, quantité, price){
+function displayPanier( src, title, colors, quantité, price){
     let panier = document.getElementById('panier');
     let div = document.createElement('div');
     let img = document.createElement('img');
@@ -13,8 +13,6 @@ function displayPanier( src, title, id, colors, quantité, price){
     let i = document.createElement('i')
     let btnDel = document.createElement('button');
    
-    
-    
     div.className = "teddy";
     img.src = src;
     name.innerText = title;
@@ -40,7 +38,7 @@ function displayPanier( src, title, id, colors, quantité, price){
                            
 }
 for(let i in panierLists){
-    displayPanier( panierLists[i].img, panierLists[i].name,panierLists[i].id,panierLists[i].color,panierLists[i].quantité,panierLists[i].price);
+    displayPanier( panierLists[i].img, panierLists[i].name,panierLists[i].color,panierLists[i].quantité,panierLists[i].price);
 }
 
  // count total price
@@ -55,12 +53,9 @@ for(let i in panierLists){
  totalPrix.appendChild(i);
  panier.appendChild(totalPrix);
 
- console.log(panier)
-
+ //delete goods function
 function deletGood(){
     let btns = document.querySelectorAll('.delBtn');
-    
-
     for(let i=0; i<btns.length; i++){
         btns[i].addEventListener('click', function(e){
             
@@ -73,11 +68,45 @@ function deletGood(){
            // console.log(JSON.stringify(panierLists));
             localStorage.removeItem('panierLists')
             localStorage.setItem('panierLists',JSON.stringify(panierLists));
-            
-        
-            
+                       
         })
     }
    
 }
 deletGood();
+
+let submit = document.getElementById('submit');
+submit.addEventListener('click', function(e){
+    // stop auto submit of the form
+    e.preventDefault();
+    let lastName = document.getElementById('nom');
+    let firstName = document.getElementById('prenom');
+    let address = document.getElementById('addresse');
+    let city = document.getElementById('ville');
+    let email = document.getElementById('email')
+    let contact =JSON.stringify( {
+        lastName: lastName.value,
+        firstName: firstName.value,
+        address: address.value,
+        city: city.value,
+        email: email.value
+    })
+   let products =  JSON.stringify(panierLists);
+   console.log(products)
+   let reqUrl = 'http://localhost:3000/api/teddies/order';
+   fetch(reqUrl, {
+       method: "post",
+       body: contact, products,
+       headers:{"Content-Type": "application/json"}
+   })
+   .then(function(response){
+       return response.json()
+   })
+   .then(function(data){
+       console.log(data)
+   })
+   .catch(function(err){
+    alert('error');
+   })
+
+})

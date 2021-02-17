@@ -10,6 +10,7 @@
     <title>Document</title>
 </head>
 <body>
+   
     <div class="bloc_page">
         <header>
             <div>
@@ -22,37 +23,40 @@
                 </ul>
             </nav>
           </header>
+
+          <main>
+            <div id="panier" class="panier">
+              
+                
+            </div>
+            <form id="info-client">
+                <div class="form-group">
+                    <label for="nom">Nom :</label>
+                    <input type="text" class="" placeholder="Votre Nom" required>
+                </div>
+                <div>
+                    <label for="prénom">Prénom :</label>
+                    <input type="text" class="" placeholder="Votre Prénom" required>
+                </div>
+                <div>
+                    <label for="addresse">Addresse :</label>
+                    <input type="text" class="" placeholder="Votre Addresse" required>
+                </div>
+                <div>
+                    <label for="ville">Ville :</label>
+                    <input type="text" class="" placeholder="Votre Ville" required>
+                </div>
+                <div>
+                    <label for="emaail">Email :</label>
+                    <input type="email" class="" placeholder="Votre Email Addresse" required>
+                </div>
+    
+    
+            </form>
+            <input type="submit" value="Commande" class="btnCmd"> 
+        </main>   
     </div>
-    <main>
-        <div id="panier" class="panier">
-            
-        </div>
-        <form id="info-client">
-            <div class="form-group">
-                <label for="nom">Nom :</label>
-                <input type="text" class="" placeholder="Votre Nom" required>
-            </div>
-            <div>
-                <label for="prénom">Prénom :</label>
-                <input type="text" class="" placeholder="Votre Prénom" required>
-            </div>
-            <div>
-                <label for="addresse">Addresse :</label>
-                <input type="text" class="" placeholder="Votre Addresse" required>
-            </div>
-            <div>
-                <label for="ville">Ville :</label>
-                <input type="text" class="" placeholder="Votre Ville" required>
-            </div>
-            <div>
-                <label for="emaail">Email :</label>
-                <input type="email" class="" placeholder="Votre Email Addresse" required>
-            </div>
-
-
-        </form>
-        <button value="Commande" class="btnCmd"> Command</button>
-    </main>   
+   
     <script src="panier.js"></script>
      
     

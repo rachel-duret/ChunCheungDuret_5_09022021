@@ -85,14 +85,16 @@ a {
 }
 
 #info-client {
-  width: 80%;
+  width: 100%;
   height: auto;
   margin: auto;
+  border: 1px solid gray;
 }
 
 #info-client div {
   border: 1px solid #f2f2f2;
   height: 30px;
+  border-bottom: 1px solid gray;
 }
 
 #info-client label {
@@ -103,14 +105,19 @@ a {
 #info-client input {
   display: inline-block;
   border: none;
-  width: 80%;
+  width: 90%;
   height: 95%;
 }
 
 .btnCmd {
   display: inline-block;
-  margin: auto;
-  background-color: green;
+  margin-top: 30px;
+  margin-left: 85%;
+  width: 100px;
+  height: 30px;
+  border: 1px solid #10b973;
+  cursor: pointer;
+  background-color: #10b973;
 }
 
 a {
@@ -126,6 +133,11 @@ img {
   border-radius: 20px;
 }
 
+#panier {
+  border: 1px solid gray;
+  margin-bottom: 30px;
+}
+
 #panier > div {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -135,34 +147,25 @@ img {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   margin: 30px;
+  border-bottom: 1px dashed gray;
 }
 
-#panier > div img {
+#panier img {
   width: 150px;
   height: auto;
 }
 
-#panier > div .delBtn {
+#panier .delBtn {
   width: 80px;
   height: 20px;
+  border: 1px solid #eb7777;
   color: white;
   cursor: pointer;
-  background-color: #c72929;
+  background-color: #eb7777;
 }
 
-#panier > div .divNum {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 30px;
-  height: 20px;
-}
-
-#panier > div .divNum button {
-  cursor: pointer;
-}
-
-#panier > div .divNum > input {
-  width: 20px;
+#panier h3 {
+  text-align: end;
+  padding-right: 50px;
 }
 /*# sourceMappingURL=all.css.map */

@@ -1,6 +1,5 @@
 
 let panierLists = JSON.parse(localStorage.getItem('panierLists'));
-console.log(panierLists)
 function displayPanier( src, title, colors, quantité, price){
     let panier = document.getElementById('panier');
     let div = document.createElement('div');
@@ -44,12 +43,13 @@ for(let i in panierLists){
  // count total price and create productsId
  let products= new Array;
  let sum = 0;
- for( let i=0; i<panierLists.length; i++){
-     sum += panierLists[i].price 
-     products.push(panierLists[i].id);
-     console.log(products)
-    
+ if (panierLists !==null){
+    for( let i=0; i<panierLists.length; i++){
+        sum += panierLists[i].price 
+        products.push(panierLists[i].id);
+    }
  }
+ 
  let totalPrix = document.createElement('h3');
  let i = document.createElement('i');
  i.className = "  fas fa-euro-sign"
@@ -72,6 +72,7 @@ function deletGood(){
            // console.log(JSON.stringify(panierLists));
             localStorage.removeItem('panierLists')
             localStorage.setItem('panierLists',JSON.stringify(panierLists));
+            location.reload();
                        
         })
     }
@@ -110,8 +111,16 @@ submit.addEventListener('click', function(e){
        return response.json()
    })
    .then(function(data){
+       let panierLists = null;
+       panier.innerText=' votr panier est vid';
+       localStorage.removeItem('panierLists')
+       localStorage.setItem('panierLists',JSON.stringify(panierLists))      
+       localStorage.setItem('orderData', JSON.stringify(data));
+       //display page comfirmation
+       location.href='confirmation.html?'+data.orderId;
+
        
-       console.log(data)
+       
    })
    .catch(function(err){
     alert('error');

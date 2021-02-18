@@ -1,6 +1,10 @@
-let panierArray = []//
+let panierArray = new Array//
+
 function getPanierList(){
-    panierArray = JSON.parse(localStorage.getItem('panierLists'));
+    if (JSON.parse(localStorage.getItem("panierLists")) !== null) {
+        panierArray = JSON.parse(localStorage.getItem('panierLists'));
+      }
+    
 }
 getPanierList();
 const urlParams = new URLSearchParams(window.location.search);

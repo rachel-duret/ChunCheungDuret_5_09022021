@@ -5,12 +5,14 @@
     flex: 1;
 }
 
+//header pour toutes page
 header {
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     margin-bottom: 50px;
-    background-color: bisque;
+    background-color: rgb(243, 223, 198);
 
     #logo {
         width: auto;
@@ -27,7 +29,11 @@ header {
         list-style: none;
         margin-right: 30px;
         font-size: larger;
-        font-weight: 500;
+        font-weight: 600;
+
+        >a {
+            color: rgb(24, 23, 23);
+        }
     }
 
 }
@@ -37,10 +43,20 @@ a {
     color: black;
 }
 
+main {
+    margin: auto;
+
+    & div {
+        margin-left: auto;
+    }
+}
+
+//page index.html
 .teddies__box {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    margin: auto;
 
     &>p {
         margin-right: 30px;
@@ -49,11 +65,19 @@ a {
     & h2 {
         font-family: Raleway;
         font-size: larger;
-        font-weight: 700;
+        font-weight: 600;
     }
 }
 
-// norbert.html
+// page produit.html
+#navPanier {
+    & span {
+        display: inline-block;
+        margin-left: 5px;
+        color: rgb(235, 119, 119);
+    }
+}
+
 .teddy {
 
     & h1 {
@@ -84,6 +108,8 @@ a {
         border: 1px solid #f2f2f2;
         height: 30px;
         border-bottom: 1px dashed gray;
+        display: flex;
+        justify-content: space-between;
 
     }
 
@@ -98,7 +124,7 @@ a {
         display: inline-block;
         border: none;
         width: 90%;
-        height: 95%
+        height: 90%
     }
 
     & .btnCmd {
@@ -135,8 +161,8 @@ img {
 
     & div {
         display: flex;
-        justify-content: space-around;
         flex-wrap: wrap;
+        justify-content: space-around;
         margin: 30px;
         border-bottom: 1px dashed gray;
     }
@@ -159,6 +185,32 @@ img {
     & h3 {
         text-align: end;
         padding-right: 50px;
+    }
+
+}
+
+footer {
+    margin-top: 30px;
+    background-color: rgb(245, 205, 157);
+    width: 100%;
+    height: 60px;
+
+    & ul {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    & li {
+        margin-top: 20px;
+        list-style: none;
+        margin-right: 30px;
+        font-size: larger;
+        font-weight: 500;
+
+        >a {
+            color: black;
+            font-size: 600;
+        }
     }
 
 }

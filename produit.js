@@ -1,22 +1,25 @@
-let panierArray = new Array//
-
+let panierArray = new Array
+//recuperer data dans localStorage
 function getPanierList(){
     if (JSON.parse(localStorage.getItem("panierLists")) !== null) {
         panierArray = JSON.parse(localStorage.getItem('panierLists'));
-      }
-    
+        let navpanier = document.getElementById('navPanier');
+        let span = document.createElement('span');
+        span.innerText = panierArray.length;
+        navpanier.appendChild(span);
+      } 
 }
 getPanierList();
+// recuperer id dans la page produit.html
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get('id');
+//send request pour demande produit information qui correspondre la page de produit
 let url =fetch('http://localhost:3000/api/teddies');
 url.then(function(data){
-    return data.json();
-   
-}).then(function(dataArray){
-    //console.log(dataArray);
-    for (let key of dataArray){
-       
+    return data.json();  
+})
+.then(function(dataArray){
+    for (let key of dataArray){ 
         if (id===key._id){
             // create dom objets
             let box = document.getElementById('teddy');
@@ -34,9 +37,9 @@ url.then(function(data){
             name.innerText = key.name;
             description.innerText = key.description;
             price.innerText = key.price/100 ;
-            i.className ="fas fa-euro-sign"
+            i.className =" fas fa-euro-sign"
             selectQte.name = 'number';
-            btn.innerText = 'Add to panier'
+            btn.innerText = 'Ajouter à panier'
             btn.id = 'addBtn'
             
 
@@ -53,21 +56,17 @@ url.then(function(data){
                 let option = document.createElement('option');
                 option.innerText =key.colors[i];
                 selectColor.appendChild(option);
-                console.log(selectColor.value)
 
             }
             for(let i =1; i<10; i++){
                 let option = document.createElement('option');
                 option.innerText =i;
                 selectQte.appendChild(option);
-                console.log(selectQte.value)
+               
 
             }
 
-             //add event listener add products to localstorage
-             
-
-           
+             //add event listener add products to localstorage       
             let addGoodBtn = document.getElementById('addBtn');
             addGoodBtn.addEventListener('click', function(){
             
@@ -81,17 +80,11 @@ url.then(function(data){
                 }
                 
                 panierArray.push(PanierList)
-                localStorage.setItem('panierLists', JSON.stringify(panierArray));        
-               console.log(panierArray);
-                
-                
-            })
-
-           
-        }
-        
+                localStorage.setItem('panierLists', JSON.stringify(panierArray));    
+                location.reload();
+                  
              
-            
-             
+            })         
+        }             
     }
 })

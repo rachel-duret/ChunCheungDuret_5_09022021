@@ -11,7 +11,7 @@
 </head>
 <body>
    
-    <div class="bloc_page">
+    <div class="bloc__page">
         <header>
             <div>
                 <img src="logo.png" alt="logo" id="logo">
@@ -19,7 +19,7 @@
             <nav>
                 <ul>
                     <li><a href="index.html">Accuil</a></li>
-                    <li><a href="">Panier <i class="far fa-cart-plus"></i></a></li>
+                    <li ><a href="panier.html">Panier <i class="far fa-cart-plus"></i></a></li>
                 </ul>
             </nav>
           </header>
@@ -31,30 +31,37 @@
             </div>
             <form id="info-client">
                 <div class="form-group">
-                    <label for="nom">Nom :</label>
+                    <label for="nom">Nom </label>
                     <input type="text" id="nom" placeholder="Votre Nom" required>
                 </div>
                 <div>
-                    <label for="prénom">Prénom :</label>
+                    <label for="prénom">Prénom </label>
                     <input type="text" id="prenom" placeholder="Votre Prénom" required>
                 </div>
                 <div>
-                    <label for="addresse">Addresse :</label>
+                    <label for="addresse">Addresse </label>
                     <input type="text" id="addresse" placeholder="Votre Addresse" required>
                 </div>
                 <div>
-                    <label for="ville">Ville :</label>
+                    <label for="ville">Ville </label>
                     <input type="text" id="ville" placeholder="Votre Ville" required>
                 </div>
                 <div>
-                    <label for="emaail">Email :</label>
+                    <label for="emaail">Email </label>
                     <input type="email" id="email" placeholder="Votre Email Addresse" required>
                 </div>
                 <input type="submit" value="Commande" class="btnCmd" id="submit"> 
     
             </form>
             
-        </main>   
+        </main>  
+        <footer>
+            <ul>
+              <li><a href="#">Contact nous</a></li>
+              <li><a href="#">Partenaire</a></li>
+              <li><a href="#">Nos activité</a></li>
+            </ul>
+          </footer> 
     </div>
    
     <script src="panier.js"></script>

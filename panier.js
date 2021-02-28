@@ -5,7 +5,6 @@ function displayPanier( src, title, colors, quantité, price){
     let div = document.createElement('div');
     let img = document.createElement('img');
     let name = document.createElement('h2')
-    //let idNumber = document.createElement('p')
     let color = document.createElement('p')
     let totalQte = document.createElement('p')
     let prix = document.createElement('p')
@@ -15,7 +14,6 @@ function displayPanier( src, title, colors, quantité, price){
     div.className = "teddy";
     img.src = src;
     name.innerText = title;
-    //idNumber.innerText ='ref:'+ id;
     color.innerText = colors;
     totalQte.innerText = quantité;
     prix.innerText = price;
@@ -26,15 +24,11 @@ function displayPanier( src, title, colors, quantité, price){
     panier.appendChild(div);
     div.appendChild(img);
     div.appendChild(name);
-    //name.appendChild(idNumber);
     div.appendChild(color)
     div.appendChild(totalQte);
     div.appendChild(prix);      
     prix.appendChild(i)
-    div.appendChild(btnDel);
-   
- 
-                           
+    div.appendChild(btnDel);                             
 }
 for(let i in panierLists){
     displayPanier( panierLists[i].img, panierLists[i].name,panierLists[i].color,panierLists[i].quantité,panierLists[i].price);
@@ -48,6 +42,7 @@ for(let i in panierLists){
         sum += panierLists[i].price 
         products.push(panierLists[i].id);
     }
+    localStorage.setItem('priceteddies', sum);
  }
  
  let totalPrix = document.createElement('h3');
@@ -95,10 +90,8 @@ submit.addEventListener('click', function(e){
         address: address.value,
         city: city.value,
         email: email.value
-    }
-    //products: [string] <-- array of product _id
-    
-   console.log(products)
+    }  
+
    let reqUrl = 'http://localhost:3000/api/teddies/order';
    fetch(reqUrl, {
        method: "POST",
@@ -112,15 +105,11 @@ submit.addEventListener('click', function(e){
    })
    .then(function(data){
        let panierLists = null;
-       panier.innerText=' votr panier est vid';
        localStorage.removeItem('panierLists')
        localStorage.setItem('panierLists',JSON.stringify(panierLists))      
        localStorage.setItem('orderData', JSON.stringify(data));
        //display page comfirmation
-       location.href='confirmation.html?'+data.orderId;
-
-       
-       
+       location.href='confirmation.html?'+data.orderId;     
    })
    .catch(function(err){
     alert('error');

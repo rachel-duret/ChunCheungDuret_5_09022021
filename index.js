@@ -1,11 +1,11 @@
-// add goods in html
+// desplay teddies
 'use strict';
-let url = fetch('http://localhost:3000/api/teddies');
+let url = fetch('http://localhost:3000/api/teddies');//send request ask data of products
 url.then(function(data){
-    return data.json();
-   
-}).then(function(dataArray){
-    console.log(dataArray[0]._id);
+    return data.json();  
+})
+.then(function(dataArray){
+    //utiliser les information de dataArray pour desplay teddies in html. 
     function displayTeddies( src, title, price,href){
         let box = document.getElementById('teddies');
         let div = document.createElement('div');
@@ -27,10 +27,9 @@ url.then(function(data){
         div.appendChild(h2);
         div.appendChild(p);      
         p.appendChild(i)
-        p.appendChild(a);
-        console.log(box)
-                               
+        p.appendChild(a);                          
     }
+    //recuperer chaque information de produit et applle la fonction.
     for(let i in dataArray){
         displayTeddies( dataArray[i].imageUrl, dataArray[i].name, dataArray[i].price, 'produit.html?id='+dataArray[i]._id);
     }

@@ -1,12 +1,12 @@
 // desplay teddies
 'use strict';
 let url = fetch('http://localhost:3000/api/teddies');//send request ask data of products
-url.then(function(data){
+url.then((data) => {
     return data.json();  
 })
-.then(function(dataArray){
+.then((dataArray) => {
     //utiliser les information de dataArray pour desplay teddies in html. 
-    function displayTeddies( src, title, price,href){
+    let displayTeddies = ( src, title, price,href) => {
         let box = document.getElementById('teddies');
         let div = document.createElement('div');
         let img = document.createElement('img');
@@ -34,7 +34,14 @@ url.then(function(data){
         displayTeddies( dataArray[i].imageUrl, dataArray[i].name, dataArray[i].price, 'produit.html?id='+dataArray[i]._id);
     }
 })
-.catch(function(error){
+.catch((error) => {
     alert('error');
     
 });
+let panierLists = JSON.parse(localStorage.getItem('panierLists'));
+if (panierLists !==null){
+    let navpanier = document.getElementById('navPanier');
+    let span = document.createElement('span');
+    span.innerText = panierLists.length;
+    navpanier.appendChild(span);
+}

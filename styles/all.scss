@@ -45,10 +45,6 @@ a {
 
 main {
     margin: auto;
-
-    & div {
-        margin-left: auto;
-    }
 }
 
 //page index.html
@@ -56,7 +52,11 @@ main {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin: auto;
+
+    >div {
+        margin: auto;
+    }
+
 
     &>p {
         margin-right: 30px;
@@ -97,6 +97,20 @@ main {
 
 }
 
+select {
+    height: 30px;
+    margin-left: 5px;
+    background-color: rgb(235, 119, 119);
+    border: 1px solid rgb(235, 119, 119);
+}
+
+#addBtn {
+    height: 30px;
+    margin-left: 5px;
+    background-color: rgb(235, 119, 119);
+    border: 1px solid rgb(235, 119, 119);
+}
+
 #info-client {
     width: 100%;
     height: auto;
@@ -133,7 +147,7 @@ main {
         height: 50px;
         border: 1px solid bisque;
         cursor: pointer;
-        background-color: bisque;
+        background-color: rgb(235, 119, 119);
     }
 
 }
@@ -149,7 +163,7 @@ a {
 }
 
 img {
-    width: 300px;
+    width: 280px;
     height: auto;
     border: 1px solid #f2f2f2;
     border-radius: 20px;
@@ -159,18 +173,33 @@ img {
     border: 1px solid gray;
     margin-bottom: 30px;
 
-    & div {
+    & .teddy {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
-        margin: 30px;
         border-bottom: 1px dashed gray;
+
+        >.imgBox {
+            width: 150px;
+            height: auto;
+            text-align: left;
+
+            >img {
+                width: 100%;
+                height: auto;
+            }
+        }
     }
 
-    & img {
-        width: 150px;
-        height: auto;
+    & .infoBox {
+        width: 70%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
     }
+
+
 
     & .delBtn {
         width: 80px;
@@ -187,29 +216,39 @@ img {
         padding-right: 50px;
     }
 
+    & h4 {
+        text-align: center;
+        font-size: larger;
+    }
+
+}
+
+//confirmation page
+#main {
+    text-align: center;
 }
 
 footer {
     margin-top: 30px;
     background-color: rgb(245, 205, 157);
     width: 100%;
-    height: 60px;
+    height: auto;
 
     & ul {
         display: flex;
-        justify-content: space-between;
+        flex-wrap: wrap;
+        justify-content: space-around;
     }
 
     & li {
         margin-top: 20px;
         list-style: none;
-        margin-right: 30px;
         font-size: larger;
         font-weight: 500;
 
         >a {
             color: black;
-            font-size: 600;
+            font-size: 500;
         }
     }
 

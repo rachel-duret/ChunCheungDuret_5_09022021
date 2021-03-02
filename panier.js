@@ -1,7 +1,9 @@
 
 let panierLists = JSON.parse(localStorage.getItem('panierLists'));
-function displayPanier( src, title, colors, quantité, price){
+ displayPanier = ( src, title, quantité, colors,  price) => {
     let panier = document.getElementById('panier');
+    let divBox = document.createElement('div');
+    let divImg = document.createElement('div')
     let div = document.createElement('div');
     let img = document.createElement('img');
     let name = document.createElement('h2')
@@ -11,7 +13,9 @@ function displayPanier( src, title, colors, quantité, price){
     let i = document.createElement('i')
     let btnDel = document.createElement('button');
    
-    div.className = "teddy";
+    divBox.className = "teddy";
+    divImg.className = 'imgBox'
+    div.className = 'infoBox';
     img.src = src;
     name.innerText = title;
     color.innerText = colors;
@@ -21,23 +25,35 @@ function displayPanier( src, title, colors, quantité, price){
     btnDel.className = 'delBtn'
     btnDel.innerText = 'Supprimer'
    
-    panier.appendChild(div);
-    div.appendChild(img);
+    panier.appendChild(divBox);
+    divBox.appendChild(divImg);
+    divImg.appendChild(img);
+    divBox.appendChild(div);
     div.appendChild(name);
-    div.appendChild(color)
     div.appendChild(totalQte);
+    div.appendChild(color);
     div.appendChild(prix);      
     prix.appendChild(i)
-    div.appendChild(btnDel);                             
+    divBox.appendChild(btnDel);       
+    console.log(panier);                  
 }
 for(let i in panierLists){
-    displayPanier( panierLists[i].img, panierLists[i].name,panierLists[i].color,panierLists[i].quantité,panierLists[i].price);
+    displayPanier( panierLists[i].img, panierLists[i].name,panierLists[i].quantité,panierLists[i].color,panierLists[i].price);
 }
+if (panierLists==null || panierLists==0){
+    let text = document.createElement('h4');
+    text.innerText = 'Votre panier est vide!';
+    panier.appendChild(text); 
+    }      
 
  // count total price and create productsId
  let products= new Array;
  let sum = 0;
  if (panierLists !==null){
+    let navpanier = document.getElementById('navPanier');
+    let span = document.createElement('span');
+    span.innerText = panierLists.length;
+    navpanier.appendChild(span);
     for( let i=0; i<panierLists.length; i++){
         sum += panierLists[i].price 
         products.push(panierLists[i].id);
@@ -53,10 +69,10 @@ for(let i in panierLists){
  panier.appendChild(totalPrix);
 
  //delete goods function
-function deletGood(){
+ deletGood = () => {
     let btns = document.querySelectorAll('.delBtn');
     for(let i=0; i<btns.length; i++){
-        btns[i].addEventListener('click', function(e){
+        btns[i].addEventListener('click', (e) => {
             
             let delDiv = btns[i].parentElement;
             let parent = delDiv.parentElement;
@@ -75,8 +91,8 @@ function deletGood(){
 }
 deletGood();
 
-let submit = document.getElementById('submit');
-submit.addEventListener('click', function(e){
+let submit = document.getElementById('info-client');
+submit.addEventListener('submit', (e) => {
     // stop auto submit of the form
     e.preventDefault();
     let lastName = document.getElementById('nom');
@@ -90,7 +106,15 @@ submit.addEventListener('click', function(e){
         address: address.value,
         city: city.value,
         email: email.value
-    }  
+    } 
+    if(lastName.value,firstName.value, address.value, city.value, email.value== ''){
+        alert("Votre contact info n'est pas correct!" )
+        return false;
+    } 
+    if(panierLists===null || panierLists.length===0){
+        alert('Votre panier est vide, choissez vos produits!')
+        return false;
+    }
 
    let reqUrl = 'http://localhost:3000/api/teddies/order';
    fetch(reqUrl, {
@@ -100,10 +124,10 @@ submit.addEventListener('click', function(e){
         },
        body: JSON.stringify({contact, products})   
    })
-   .then(function(response){
+   .then((response) => {
        return response.json()
    })
-   .then(function(data){
+   .then((data) => {
        let panierLists = null;
        localStorage.removeItem('panierLists')
        localStorage.setItem('panierLists',JSON.stringify(panierLists))      
@@ -111,7 +135,7 @@ submit.addEventListener('click', function(e){
        //display page comfirmation
        location.href='confirmation.html?'+data.orderId;     
    })
-   .catch(function(err){
+   .catch((err) => {
     alert('error');
    })
 

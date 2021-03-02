@@ -19,7 +19,7 @@
             <nav>
                 <ul>
                     <li><a href="index.html">Accuil</a></li>
-                    <li ><a href="panier.html">Panier <i class="far fa-cart-plus"></i></a></li>
+                    <li ><a href="panier.html" id="navPanier">Panier </a></li>
                 </ul>
             </nav>
           </header>
@@ -32,23 +32,23 @@
             <form id="info-client">
                 <div class="form-group">
                     <label for="nom">Nom </label>
-                    <input type="text" id="nom" placeholder="Votre Nom" required>
+                    <input type="text" id="nom" name="nom" placeholder="Votre Nom" required>
                 </div>
                 <div>
                     <label for="prénom">Prénom </label>
-                    <input type="text" id="prenom" placeholder="Votre Prénom" required>
+                    <input type="text" id="prenom" name="prénom" placeholder="Votre Prénom" required>
                 </div>
                 <div>
                     <label for="addresse">Addresse </label>
-                    <input type="text" id="addresse" placeholder="Votre Addresse" required>
+                    <input type="text" id="addresse" name="addresse" placeholder="Votre Addresse" required>
                 </div>
                 <div>
                     <label for="ville">Ville </label>
-                    <input type="text" id="ville" placeholder="Votre Ville" required>
+                    <input type="text" id="ville" name="ville" placeholder="Votre Ville" required>
                 </div>
                 <div>
-                    <label for="emaail">Email </label>
-                    <input type="email" id="email" placeholder="Votre Email Addresse" required>
+                    <label for="email">Email </label>
+                    <input type="email" id="email" name="email" placeholder="Votre Email Addresse" required>
                 </div>
                 <input type="submit" value="Commande" class="btnCmd" id="submit"> 
     

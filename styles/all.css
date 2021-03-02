@@ -55,10 +55,6 @@ main {
   margin: auto;
 }
 
-main div {
-  margin-left: auto;
-}
-
 .teddies__box {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -68,6 +64,9 @@ main div {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+.teddies__box > div {
   margin: auto;
 }
 
@@ -103,6 +102,20 @@ main div {
   font-family: Raleway;
   font-size: medium;
   font-weight: 500;
+}
+
+select {
+  height: 30px;
+  margin-left: 5px;
+  background-color: #eb7777;
+  border: 1px solid #eb7777;
+}
+
+#addBtn {
+  height: 30px;
+  margin-left: 5px;
+  background-color: #eb7777;
+  border: 1px solid #eb7777;
 }
 
 #info-client {
@@ -142,7 +155,7 @@ main div {
   height: 50px;
   border: 1px solid bisque;
   cursor: pointer;
-  background-color: bisque;
+  background-color: #eb7777;
 }
 
 a {
@@ -152,7 +165,7 @@ a {
 }
 
 img {
-  width: 300px;
+  width: 280px;
   height: auto;
   border: 1px solid #f2f2f2;
   border-radius: 20px;
@@ -163,7 +176,7 @@ img {
   margin-bottom: 30px;
 }
 
-#panier div {
+#panier .teddy {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -171,13 +184,33 @@ img {
       flex-wrap: wrap;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  margin: 30px;
   border-bottom: 1px dashed gray;
 }
 
-#panier img {
+#panier .teddy > .imgBox {
   width: 150px;
   height: auto;
+  text-align: left;
+}
+
+#panier .teddy > .imgBox > img {
+  width: 100%;
+  height: auto;
+}
+
+#panier .infoBox {
+  width: 70%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 #panier .delBtn {
@@ -194,32 +227,41 @@ img {
   padding-right: 50px;
 }
 
+#panier h4 {
+  text-align: center;
+  font-size: larger;
+}
+
+#main {
+  text-align: center;
+}
+
 footer {
   margin-top: 30px;
   background-color: #f5cd9d;
   width: 100%;
-  height: 60px;
+  height: auto;
 }
 
 footer ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 footer li {
   margin-top: 20px;
   list-style: none;
-  margin-right: 30px;
   font-size: larger;
   font-weight: 500;
 }
 
 footer li > a {
   color: black;
-  font-size: 600;
+  font-size: 500;
 }
 /*# sourceMappingURL=all.css.map */

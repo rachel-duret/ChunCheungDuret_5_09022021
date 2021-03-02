@@ -1,6 +1,6 @@
 let panierArray = new Array
 //recuperer data dans localStorage
-function getPanierList(){
+ getPanierList = () => {
     if (JSON.parse(localStorage.getItem("panierLists")) !== null) {
         panierArray = JSON.parse(localStorage.getItem('panierLists'));
         let navpanier = document.getElementById('navPanier');
@@ -15,10 +15,10 @@ const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get('id');
 //send request pour demande produit information qui correspondre la page de produit
 let url =fetch('http://localhost:3000/api/teddies');
-url.then(function(data){
+url.then((data) => {
     return data.json();  
 })
-.then(function(dataArray){
+.then((dataArray) => {
     for (let key of dataArray){ 
         if (id===key._id){
             // create dom objets
@@ -68,7 +68,7 @@ url.then(function(data){
 
              //add event listener add products to localstorage       
             let addGoodBtn = document.getElementById('addBtn');
-            addGoodBtn.addEventListener('click', function(){
+            addGoodBtn.addEventListener('click', () => {
             
                 let PanierList = {
                     "img": img.src,

@@ -1,32 +1,34 @@
-// desplay teddies
 'use strict';
-let url = fetch('http://localhost:3000/api/teddies');//send request ask data of products
+// desplay teddies
+let url = fetch('http://localhost:3000/api/teddies');//send request demander data de produit
 url.then((data) => {
     return data.json();  
 })
 .then((dataArray) => {
-    //utiliser les information de dataArray pour desplay teddies in html. 
+    //utiliser les information de dataArray pour desplay teddies index.html. 
     let displayTeddies = ( src, title, price,href) => {
+        //créate elements
         let box = document.getElementById('teddies');
         let div = document.createElement('div');
         let img = document.createElement('img');
-        let h2 = document.createElement('h2')
-        let p = document.createElement('p')
-        let i = document.createElement('i')
+        let h2 = document.createElement('h2');
+        let p = document.createElement('p');
+        let i = document.createElement('i');
         let a = document.createElement('a');
+        // donner values à elements
         div.className = "teddy";
         img.src = src;
         h2.innerText = title;
         p.innerText = price/100 ;
-        i.className ="fas fa-euro-sign"
-        a.innerText = 'Voir plus'
-        
+        i.className ="fas fa-euro-sign";
+        a.innerText = 'Voir plus' ;
         a.href = href;
+        // append elements child à des parents element qui correspondre
         box.appendChild(div);
         div.appendChild(img);
         div.appendChild(h2);
         div.appendChild(p);      
-        p.appendChild(i)
+        p.appendChild(i);
         p.appendChild(a);                          
     }
     //recuperer chaque information de produit et applle la fonction.
@@ -38,6 +40,7 @@ url.then((data) => {
     alert('error');
     
 });
+//afficher  panier quantité dans navbar de la page accuile.
 let panierLists = JSON.parse(localStorage.getItem('panierLists'));
 if (panierLists !==null){
     let navpanier = document.getElementById('navPanier');

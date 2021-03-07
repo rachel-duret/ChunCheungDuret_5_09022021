@@ -86,13 +86,12 @@ if (panierLists==null || panierLists==0){
              panierLists.splice(i,1);// delete produit data dans localstorage qui corresponds delete produit dans la page
             localStorage.removeItem('panierLists')
             localStorage.setItem('panierLists',JSON.stringify(panierLists));
-            location.reload();
-                       
+            location.reload();               
         })
-    }
-   
+    }  
 }
 deletGood();
+
 //add eventlistener pour form submit
 let submit = document.getElementById('info-client');
 submit.addEventListener('submit', (e) => {
@@ -121,6 +120,7 @@ submit.addEventListener('submit', (e) => {
         alert('Votre panier est vide, choissez vos produits!');
         return false;
     }
+
     // send request à backend pour demander confirmation 
    let reqUrl = 'http://localhost:3000/api/teddies/order';
    fetch(reqUrl, {
@@ -145,5 +145,4 @@ submit.addEventListener('submit', (e) => {
    .catch((err) => {
     alert('error');
    })
-
 })

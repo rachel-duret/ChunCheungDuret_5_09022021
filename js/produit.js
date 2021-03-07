@@ -11,9 +11,11 @@ let getPanierList = () => {
       } 
 }
 getPanierList();
+console.log(panierArray)
 // recuperer id dans la page produit.html
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get('id');
+
 //send request pour demande produit information qui correspondre la page de produit
 let url =fetch('http://localhost:3000/api/teddies');
 url.then((data) => {
@@ -67,7 +69,7 @@ url.then((data) => {
             }
 
              //add event listener add products to localstorage       
-            let addGoodBtn = document.getElementById('addBtn');
+            const addGoodBtn = document.getElementById('addBtn');
             addGoodBtn.addEventListener('click', () => {
             // create un object pour localstorage
                 let PanierList = {

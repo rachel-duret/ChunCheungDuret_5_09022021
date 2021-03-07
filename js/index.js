@@ -40,11 +40,12 @@ url.then((data) => {
     alert('error');
     
 });
+
 //afficher  panier quantité dans navbar de la page accuile.
 let panierLists = JSON.parse(localStorage.getItem('panierLists'));
 if (panierLists !==null){
-    let navpanier = document.getElementById('navPanier');
-    let span = document.createElement('span');
+    const navpanier = document.getElementById('navPanier');
+    const span = document.createElement('span');
     span.innerText = panierLists.length;
     navpanier.appendChild(span);
 }

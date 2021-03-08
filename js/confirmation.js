@@ -4,13 +4,13 @@ let orderData = JSON.parse(localStorage.getItem('orderData'));
 let productsData = orderData.products;
 let produits ='Teddies: ';
 let Couleurs = 'Couleurs: ';
-/* let sum = 0;
+let sum = 0;
 if (productsData !==null || !undefined){
     for(let i=0; i<productsData.length; i++){
         sum += productsData[i].price/100;
         produits += productsData[i].name+'-';    
     }
-} */
+}
 let priceTotal = localStorage.getItem('priceteddies');
 let main = document.getElementById('main');
 let h1 = document.createElement('h1');

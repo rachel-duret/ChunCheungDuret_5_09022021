@@ -11,20 +11,17 @@ let getPanierList = () => {
       } 
 }
 getPanierList();
-console.log(panierArray)
 // recuperer id dans la page produit.html
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get('id');
 
 //send request pour demande produit information qui correspondre la page de produit
-let url =fetch('http://localhost:3000/api/teddies');
+let url =fetch('http://localhost:3000/api/teddies/'+id);
 url.then((data) => {
     return data.json();  
 })
 // create a page produit
-.then((dataArray) => {
-    for (let key of dataArray){ 
-        if (id===key._id){
+.then((dataArray) => { 
             // create elements
             let box = document.getElementById('teddy');
             let div = document.createElement('div');
@@ -37,13 +34,13 @@ url.then((data) => {
             let selectQte = document.createElement('select');
             let btn = document.createElement('button');
             // donner des value à des elements
-            img.src = key.imageUrl;
-            name.innerText = key.name;
-            description.innerText = key.description;
-            price.innerText = key.price/100 ;
+            img.src = dataArray.imageUrl;
+            name.innerText = dataArray.name;
+            description.innerText = dataArray.description;
+            price.innerText = dataArray.price/100 ;
             i.className =" fas fa-euro-sign";
             selectQte.name = 'number';
-            btn.innerText = 'Ajouter à panier';
+            btn.innerText = 'Ajouter aux panier';
             btn.id = 'addBtn' ;
             // append elements child à des parents element qui correspondre
             box.appendChild(div);
@@ -56,9 +53,9 @@ url.then((data) => {
             div.appendChild(selectQte);
             div.appendChild(btn);
             //create options pour couleurs
-            for(let i =0; i<key.colors.length; i++){
+            for(let i =0; i<dataArray.colors.length; i++){
                 let option = document.createElement('option');
-                option.innerText =key.colors[i];
+                option.innerText =dataArray.colors[i];
                 selectColor.appendChild(option);
             }
             // create options pour produits quantité
@@ -84,6 +81,5 @@ url.then((data) => {
                 localStorage.setItem('panierLists', JSON.stringify(panierArray));    
                 location.reload();            
             })         
-        }             
-    }
+                     
 })
